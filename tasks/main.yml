@@ -8,3 +8,33 @@
   tags:
     - vars
     - always
+
+- name: Ensuring we have composer user
+  user:
+    name: "{{ compose_local_user }}"
+    comment: "CentOS Compose user"
+
+- name: Ensuring local compose user ssh pub keys are injected
+  authorized_key:
+    user: "{{ compose_local_user }}"
+    key: "{{ item }}"
+  with_items: "{{ compose_local_user_sshkeys }}"  
+
+- import_role:
+    name: koji-client
+  vars:
+    koji_hub_url: "{{ compose_koji_hub_url }}"
+    koji_web_url: "{{ compose_koji_web_url }}"
+    koji_files_url: "{{ compose_koji_files_url }}"
+    koji_auth_tls: "{{ compose_koji_auth_tls }}"
+    koji_user: "{{ compose_local_user }}"
+    koji_pem: "{{ compose_koji_pem }}"
+    koji_auth_kerberos: "{{ compose_koji_auth_kerberos }}"
+    koji_principal: "{{ compose_koji_principal }}"
+    koji_keytab: "{{ compose_koji_keytab }}"
+
+- name: Ensuring we have some pungi pkgs installed
+  yum:
+    name: "{{ compose_pkgs }}"
+    state: latest
+    

@@ -1,1 +1,21 @@
 # Defaults variables for role compose-host
+
+# local user that will kick pungi and other compose tasks
+compose_local_user: pungi
+# which ssh pub keys needs to be injected so that from control host (jenkins or else) we can trigger jobs
+compose_local_user_sshkeys:
+  - ssh-rsa bla
+  - ssh-ed25519 foo
+
+# koji client config
+compose_koji_hub_url:
+compose_koji_web_url:
+compose_koji_files_url:
+compose_koji_auth_tls: True
+compose_koji_user: admin
+compose_koji_pem: admin.pem
+# If using kerberos
+compose_koji_auth_kerberos: False
+compose_koji_principal: koji-admin@DEV.CENTOS.ORG
+compose_koji_keytab: koji-admin.keytab # Needed only if koji_auth_kerberos above and vice/versa with TLS
+
