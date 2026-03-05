@@ -2,6 +2,9 @@
 
 # local user that will kick pungi and other compose tasks
 compose_local_user: pungi
+# which specific local uid for the user (needed sometimes to match nfs perms)
+compose_local_userid: 1337
+
 # which ssh pub keys needs to be injected so that from control host (jenkins or else) we can trigger jobs
 compose_local_user_sshkeys:
   - ssh-rsa bla

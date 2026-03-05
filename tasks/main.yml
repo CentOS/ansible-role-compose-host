@@ -13,6 +13,7 @@
   user:
     name: "{{ compose_local_user }}"
     comment: "CentOS Compose user"
+    uid: "{{ compose_local_userid }}"
 
 - name: Ensuring local compose user ssh pub keys are injected
   authorized_key:
@@ -37,4 +38,5 @@
   yum:
     name: "{{ compose_pkgs }}"
     state: latest
-    
+  tags:
+    - pkgs    

@@ -2,4 +2,5 @@ compose_pkgs:
   - pungi
   - git
   - java-21-openjdk-headless
-  
+  - make  
+  - intltool
