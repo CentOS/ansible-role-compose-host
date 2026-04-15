@@ -27,6 +27,7 @@
     koji_hub_url: "{{ compose_koji_hub_url }}"
     koji_web_url: "{{ compose_koji_web_url }}"
     koji_files_url: "{{ compose_koji_files_url }}"
+    koji_topdir: "{{ compose_koji_topdir }}"
     koji_auth_tls: "{{ compose_koji_auth_tls }}"
     koji_user: "{{ compose_local_user }}"
     koji_pem: "{{ compose_koji_pem }}"

@@ -14,6 +14,7 @@ compose_local_user_sshkeys:
 compose_koji_hub_url:
 compose_koji_web_url:
 compose_koji_files_url:
+compose_koji_topdir: /mnt/koji
 compose_koji_auth_tls: True
 compose_koji_user: admin
 compose_koji_pem: admin.pem
