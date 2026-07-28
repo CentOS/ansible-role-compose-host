@@ -4,3 +4,4 @@ compose_pkgs:
   - java-21-openjdk-headless
   - make  
   - intltool
+  - fus
