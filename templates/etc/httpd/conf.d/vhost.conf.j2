@@ -1,0 +1,25 @@
+<VirtualHost *:80>
+ ServerAdmin webmaster@centos.org
+ ServerName {{ item.fqdn }}
+ CustomLog logs/{{ item.fqdn }} combined
+ ErrorLog logs/{{ item.fqdn }}_error.log
+ DocumentRoot {{ item.docroot }}
+ ReadmeName /centos-design/footer.html
+ HeaderName /centos-design/header-centos-stream-composes.html
+ IndexIgnoreReset ON
+ IndexIgnore *~ *# HEADER* README* RCS CVS *,v *,t FOOTER.html
+
+ Header set Cache-Control "max-age=500,public"
+<Directory "{{ item.docroot }}">
+    Options +Indexes
+    IndexOptions NameWidth=* FancyIndexing VersionSort SuppressHTMLPreamble Charset=UTF-8
+    AddDescription "{{ inventory_hostname }}" server.id
+    HeaderName /centos-design/header-centos-stream-composes.html
+    IndexIgnoreReset ON
+    IndexIgnore *~ *# HEADER* README* RCS CVS *,v *,t FOOTER.html
+    <RequireAny>
+        Require method GET
+    </RequireAny>
+</Directory>
+</VirtualHost>
+

@@ -23,3 +23,22 @@ compose_koji_auth_kerberos: False
 compose_koji_principal: koji-admin@DEV.CENTOS.ORG
 compose_koji_keytab: koji-admin.keytab # Needed only if koji_auth_kerberos above and vice/versa with TLS
 
+# Do we want to expose composes through httpd virtual_host[s] ?
+compose_httpd_vhost: False
+# httpd header for frontend composes index
+compose_httpd_header_page:
+  title: 'CentOS Stream Composes'
+  title_lead: ''
+  with_manifestation: 'CentOS Stream Composes'
+  with_content:
+    - element: p
+      element_class: alert alert-info
+      element_content: >-
+        Learn more about the "development" and "production" composes in the <a href="https://docs.centos.org/centos-stream-docs/release/">CentOS Stream release docs</a>.
+
+# List of virtual hosts exposing different docroot/views
+compose_httpd_vhost_list:
+  - fqdn: vhost1
+    docroot: /var/www/html1
+  - fqdn: vhost2
+    docroot: /var/www/html2

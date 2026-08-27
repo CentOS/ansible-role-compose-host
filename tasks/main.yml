@@ -41,3 +41,25 @@
     state: latest
   tags:
     - pkgs    
+
+
+- block: 
+    - include_role:
+        name: httpd
+
+    - import_role:
+        name: httpd
+        tasks_from: custom-header
+      vars:
+        - httpd_custom_header_page: "{{ compose_httpd_header_page }}"
+
+    - name: Configuring httpd vhost[s]
+      template: 
+        src: etc/httpd/conf.d/vhost.conf.j2
+        dest: "/etc/httpd/conf.d/vhost-{{ item.fqdn }}.conf"
+      notify: restart_httpd  
+      with_items: "{{ compose_httpd_vhost_list }}"
+
+  when: compose_httpd_vhost
+  tags:
+    - httpd
