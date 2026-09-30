@@ -5,3 +5,5 @@ compose_pkgs:
   - make  
   - intltool
   - fus
+  - podman
+  - buildah
