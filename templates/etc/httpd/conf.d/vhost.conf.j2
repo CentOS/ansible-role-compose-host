@@ -1,7 +1,7 @@
 <VirtualHost *:80>
  ServerAdmin webmaster@centos.org
  ServerName {{ item.fqdn }}
- CustomLog logs/{{ item.fqdn }} combined
+ CustomLog logs/{{ item.fqdn }}_access.log combined
  ErrorLog logs/{{ item.fqdn }}_error.log
  DocumentRoot {{ item.docroot }}
  ReadmeName /centos-design/footer.html
