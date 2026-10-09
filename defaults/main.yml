@@ -42,3 +42,9 @@ compose_httpd_vhost_list:
     docroot: /var/www/html1
   - fqdn: vhost2
     docroot: /var/www/html2
+
+
+# Do we need aws credentials to push (releng) AMIs to AWS
+compose_aws_push: False
+compose_aws_access_key_id:
+compose_aws_secret_access_key: 

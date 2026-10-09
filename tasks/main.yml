@@ -63,3 +63,22 @@
   when: compose_httpd_vhost
   tags:
     - httpd
+
+- block: 
+    - name: Local aws config dir
+      file:
+        path: "/home/{{ compose_local_user }}/.aws"
+        state: directory
+        owner: "{{ compose_local_user }}"
+        group: "{{ compose_local_user }}"
+        mode: 0700
+
+    - name: Configuring aws creds
+      template:
+        src: aws-credentials.j2
+        dest: "/home/{{ compose_local_user }}/.aws/credentials"
+
+  when:
+    - compose_aws_push
+  tags:
+    - aws

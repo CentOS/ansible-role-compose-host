@@ -7,3 +7,4 @@ compose_pkgs:
   - fus
   - podman
   - buildah
+  - awscli2
