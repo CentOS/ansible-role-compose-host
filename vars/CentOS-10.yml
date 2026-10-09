@@ -8,3 +8,5 @@ compose_pkgs:
   - podman
   - buildah
   - awscli2
+  - python3-GitPython
+  - python3-jinja2
