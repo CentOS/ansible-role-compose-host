@@ -75,9 +75,11 @@
 
     - name: Configuring aws creds
       template:
-        src: aws-credentials.j2
-        dest: "/home/{{ compose_local_user }}/.aws/credentials"
-
+        src: "aws/{{ item }}.j2"
+        dest: "/home/{{ compose_local_user }}/.aws/{{ item }}"
+      with_items:
+        - credentials
+        - config
   when:
     - compose_aws_push
   tags:
